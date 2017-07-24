@@ -57,14 +57,14 @@ function OnCollisionEnter(other: Collision)
 	other.gameObject.tag=="BattleDroneDuel"||
 	other.gameObject.tag=="BattleDroneVenus"||other.gameObject.tag=="BattleDroneSnake")
 	{
-		rigidbody.freezeRotation=false;
+		GetComponent.<Rigidbody>().freezeRotation=false;
 		var expScript:Explosion=gameObject.GetComponent("Explosion")as Explosion;
 		expScript.GotHit();	
 	}	
 }
 function OnDamage()
 {
-	rigidbody.freezeRotation=false;
+	GetComponent.<Rigidbody>().freezeRotation=false;
 	var expScript:Explosion=gameObject.GetComponent("Explosion")as Explosion;
 	expScript.GotHit();	
 }
@@ -82,8 +82,8 @@ function Awake()
 		var g: float = StringToFloat(ll[1]);
 		var b: float = StringToFloat(ll[2]);
 	
-		renderer.material.color = new Color(r,g,b,1);
-		renderer.material.mainTexture = Resources.Load("shipTextures/"+l[1],Texture) as Texture;
+		GetComponent.<Renderer>().material.color = new Color(r,g,b,1);
+		GetComponent.<Renderer>().material.mainTexture = Resources.Load("shipTextures/"+l[1],Texture) as Texture;
 	}
 }
 function StringToFloat(p: String): float

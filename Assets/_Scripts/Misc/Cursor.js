@@ -6,7 +6,7 @@ private var alwaysCursor: boolean=true;
 
 function Start() 
 {
-    if(Application.platform!=RuntimePlatform.FlashPlayer||alwaysCursor) Screen.showCursor = false;
+    if(Application.platform!=RuntimePlatform.FlashPlayer||alwaysCursor) UnityEngine.Cursor.visible = false;
 }
 
 function OnGUI()
@@ -25,6 +25,6 @@ function EnableCursor(p: boolean)
 	if(Application.platform!=RuntimePlatform.FlashPlayer&&!alwaysCursor)
 	{
 		isCursorEnabled=p;
-		Screen.showCursor = false;
+		UnityEngine.Cursor.visible = false;
 	}
 }

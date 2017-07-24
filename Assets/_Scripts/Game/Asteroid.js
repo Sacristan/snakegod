@@ -20,7 +20,7 @@ function OnTriggerEnter(other: Collider)
 {
 	if(other.gameObject.CompareTag("Siets"))
 	{
-		audio.PlayOneShot(sfx);
+		GetComponent.<AudioSource>().PlayOneShot(sfx);
 	 	Destroy(gameObject,1);	
 	}
 }

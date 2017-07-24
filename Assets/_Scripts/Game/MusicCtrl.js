@@ -12,7 +12,7 @@ private var bossFightTrigerred: boolean = false;
 
 function Start()
 {
-	storedVolume = audio.volume;
+	storedVolume = GetComponent.<AudioSource>().volume;
 	mute = false;
 }
 
@@ -20,7 +20,7 @@ function FixedUpdate()
 {	
 	if(!bossFightTrigerred)
 		{
-		volume = audio.volume;
+		volume = GetComponent.<AudioSource>().volume;
 		
 		if(mute)
 		{
@@ -29,36 +29,36 @@ function FixedUpdate()
 				justMuted = true;
 				storedVolume = volume;
 			}
-			audio.volume = 0; 
-			volume = audio.volume;
+			GetComponent.<AudioSource>().volume = 0; 
+			volume = GetComponent.<AudioSource>().volume;
 		}
 		else
 		{
 			justMuted = false;
 			volume = storedVolume;
-			audio.volume = volume;
+			GetComponent.<AudioSource>().volume = volume;
 		}
 	}
 }
 
 function FadeInAudio()
 {
-	var t: float = audio.volume;
+	var t: float = GetComponent.<AudioSource>().volume;
     while (t < 1.0) 
     {
     	t += Time.deltaTime;
-    	audio.volume = t;
+    	GetComponent.<AudioSource>().volume = t;
     	yield WaitForSeconds(0.2);
     }
 }
 
 function FadeOutAudio()
 {
-	var t: float = audio.volume;
+	var t: float = GetComponent.<AudioSource>().volume;
     while (t > 0.0) 
     {
     	t -= Time.deltaTime;
-    	audio.volume = t;
+    	GetComponent.<AudioSource>().volume = t;
     	yield WaitForSeconds(0.2);
     }
 }
@@ -67,9 +67,9 @@ function BossFight()
 {
 	bossFightTrigerred=true;
 	yield FadeOutAudio();
-	audio.Stop();
-	audio.clip=bossClip;
-	audio.Play();
+	GetComponent.<AudioSource>().Stop();
+	GetComponent.<AudioSource>().clip=bossClip;
+	GetComponent.<AudioSource>().Play();
 	Instantiate(Resources.Load("Fermis",Transform));
 	yield FadeInAudio();
 	bossFightTrigerred=false;

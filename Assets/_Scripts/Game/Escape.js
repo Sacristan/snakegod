@@ -9,9 +9,9 @@ function QuitGame()
 {
 	var upperText: GameObject=GameObject.Find("UpperText");
 	upperText.SendMessage("StopAllTexts");
-	upperText.guiText.text="THANK YOU FOR PLAYING!";
+	upperText.GetComponent.<GUIText>().text="THANK YOU FOR PLAYING!";
 	yield WaitForSeconds(2);
-	Destroy(upperText.guiText);
+	Destroy(upperText.GetComponent.<GUIText>());
 	Instances.Save();
 	Application.LoadLevel(0);
 }

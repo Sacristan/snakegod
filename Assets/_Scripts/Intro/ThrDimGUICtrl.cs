@@ -32,7 +32,7 @@ public class ThrDimGUICtrl : MonoBehaviour {
 		if(textMesh.text==""&&buttonText!="") textMesh.text=buttonText;
 		
 		back = transform.GetChild(0).gameObject;
-		back.renderer.material.color = backColor;
+		back.GetComponent<Renderer>().material.color = backColor;
 		if(activeCamera==null) activeCamera = Camera.main;
 		
 		ArrangeBack(textMesh.text);	
@@ -57,9 +57,9 @@ public class ThrDimGUICtrl : MonoBehaviour {
 		Ray ray= activeCamera.ScreenPointToRay(Input.mousePosition);
 		RaycastHit hit;
 	
-		if(back.collider.Raycast(ray, out hit, 100.0f))
+		if(back.GetComponent<Collider>().Raycast(ray, out hit, 100.0f))
 		{
-			renderer.material.color = overColor;
+			GetComponent<Renderer>().material.color = overColor;
 			
 			if(Input.GetMouseButtonUp(0))
 			{
@@ -83,7 +83,7 @@ public class ThrDimGUICtrl : MonoBehaviour {
 				}
 			}
 		}
-		else renderer.material.color = defColor;
+		else GetComponent<Renderer>().material.color = defColor;
 	}
 	public void SetActiveCamera(Camera cam)
 	{

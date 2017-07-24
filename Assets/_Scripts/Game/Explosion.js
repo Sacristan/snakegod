@@ -21,13 +21,13 @@ function GotHit()
 	{
 		//audio.priority=255;
 		audioPlayed=true;
-		audio.PlayOneShot(sfx);
+		GetComponent.<AudioSource>().PlayOneShot(sfx);
 	}
 	if(gameObject.tag=="SnakeGod")
 	{
 		var questCtrl: QuestControl=GameObject.Find("UpperText").GetComponent("QuestControl") as QuestControl;
 		questCtrl.ChangeText("sacrifice");
-		GameObject.FindWithTag("Player").AddComponent("Detonator");
+		GameObject.FindWithTag("Player").AddComponent.<Detonator>();
 	}	
 	if(gameObject.tag=="Player")
 	{
@@ -39,12 +39,12 @@ function GotHit()
 	}
 	else
 	{
-		Destroy(collider,1.5f);
+		Destroy(GetComponent.<Collider>(),1.5f);
 		var scr: BattleDroneControl = GetComponent(BattleDroneControl) as BattleDroneControl;
 		if(scr!=null) Destroy(scr);
 		Instances.killedCount++;
 	}
-	gameObject.AddComponent("Detonator");
+	gameObject.AddComponent.<Detonator>();
 	
 	var detScript: Detonator=gameObject.GetComponent("Detonator")as Detonator;
 	detScript.size=3;

@@ -8,13 +8,13 @@ private var tempScore: int=0;
 
 function Start()
 {
-	guiText.material.color=textColor;
-	GameObject.FindWithTag("Quest").guiText.material.color=textColor;
+	GetComponent.<GUIText>().material.color=textColor;
+	GameObject.FindWithTag("Quest").GetComponent.<GUIText>().material.color=textColor;
 }
 
 function Update () 
 {
-	if(tempScore<=0&&!adding) gameObject.guiText.text=PlayerPrefs.GetString("PlayerName","Pilot")+"'s score: "+score;
+	if(tempScore<=0&&!adding) gameObject.GetComponent.<GUIText>().text=PlayerPrefs.GetString("PlayerName","Pilot")+"'s score: "+score;
 }
 function AddScore(object: String)
 {
@@ -25,7 +25,7 @@ function AddScore(object: String)
 	
 	while(tempScore>0)
 	{
-		gameObject.guiText.text=PlayerPrefs.GetString("PlayerName","Pilot")+"'s score: "+score+" +"+tempScore+"";	
+		gameObject.GetComponent.<GUIText>().text=PlayerPrefs.GetString("PlayerName","Pilot")+"'s score: "+score+" +"+tempScore+"";	
 		yield WaitForSeconds(pointAddTime);
 		score++;
 		tempScore--;
@@ -37,7 +37,7 @@ function SubmitHighScore()
 	if(score>PlayerPrefs.GetInt("highScore"))
 	{
 		adding=true;
-		gameObject.guiText.text=PlayerPrefs.GetString("PlayerName","Pilot")+" got NEW HIGHSCORE!!!";
+		gameObject.GetComponent.<GUIText>().text=PlayerPrefs.GetString("PlayerName","Pilot")+" got NEW HIGHSCORE!!!";
 		PlayerPrefs.SetInt("highScore",score+tempScore);
 	}	
 }

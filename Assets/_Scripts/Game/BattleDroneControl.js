@@ -25,7 +25,7 @@ function Awake()
 	lastShot=Time.time;
 	tempLives=battleDroneLives;
 	transform.Rotate(0,180,0);
-	updateText=GameObject.Find("UpperText").guiText;
+	updateText=GameObject.Find("UpperText").GetComponent.<GUIText>();
 	
 	playerObj=GameObject.FindWithTag("Player");
 	Instances.battleDroneSpawned = true;

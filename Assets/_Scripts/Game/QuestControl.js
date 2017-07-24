@@ -71,21 +71,21 @@ function ChangeText(mode:String)
 	if(mode=="intro")
 	{
 		showSkipButton=true;
-		guiText.text=introString1;
+		GetComponent.<GUIText>().text=introString1;
 		yield WaitForSeconds(textChangeTime);
-		guiText.text=introString2;
+		GetComponent.<GUIText>().text=introString2;
 		yield WaitForSeconds(textChangeTime);
-		guiText.text=introString3;
+		GetComponent.<GUIText>().text=introString3;
 		yield WaitForSeconds(textChangeTime);
-		guiText.text=introString4;
+		GetComponent.<GUIText>().text=introString4;
 		yield WaitForSeconds(textChangeTime);
-		guiText.text=introString5;
+		GetComponent.<GUIText>().text=introString5;
 		yield WaitForSeconds(textChangeTime);
 		showSkipButton=false;
 		
 		if(!skipped)
 		{
-			guiText.text=introStringFinal;
+			GetComponent.<GUIText>().text=introStringFinal;
 			showEngineButton=true;
 		}	
 	}
@@ -93,7 +93,7 @@ function ChangeText(mode:String)
 	{
 		skipped=true;
 		showSkipButton=false;
-		guiText.text=introStringFinal;
+		GetComponent.<GUIText>().text=introStringFinal;
 		showEngineButton=true;
 	}
 	
@@ -113,7 +113,7 @@ function ChangeText(mode:String)
 		startAsteroidField=false;
 		fixedTime=0;
 		asteroidFieldCountDown=false;
-		guiText.text="Exiting Asteroid Field! Its now safe for a while...";
+		GetComponent.<GUIText>().text="Exiting Asteroid Field! Its now safe for a while...";
 		yield WaitForSeconds(textChangeTime+1);
 		Camera.main.SendMessage("fadeOut");	
 		yield WaitForSeconds(textChangeTime-1);
@@ -132,11 +132,11 @@ function ChangeText(mode:String)
 		sunLight.active=true;
 		skyBox.material=sunSkybox;
 		Camera.main.SendMessage("fadeIn");	
-		guiText.text="You are near a huge Star - there is no need to use Highspeed Engine!";
+		GetComponent.<GUIText>().text="You are near a huge Star - there is no need to use Highspeed Engine!";
 		yield WaitForSeconds(textChangeTime);
-		guiText.text="Wait... I see movement near the Star in my radar!";
+		GetComponent.<GUIText>().text="Wait... I see movement near the Star in my radar!";
 		yield WaitForSeconds(textChangeTime);
-		guiText.text="Bad News! It's a horde of reptilian CrossShips! Destroy Them!";
+		GetComponent.<GUIText>().text="Bad News! It's a horde of reptilian CrossShips! Destroy Them!";
 		yield WaitForSeconds(textChangeTime);
 		incomingEnemyWarning=true;
 		Destroy(GameObject.Find("Spawner2"));
@@ -157,22 +157,22 @@ function ChangeText(mode:String)
 		changedToBattleDrones=true;
 		crossShipSpawn=false;
 		destroyedCrosships=0;
-		guiText.text="More Bad News! Snake God's Battledrones are heading to Your Position!";
+		GetComponent.<GUIText>().text="More Bad News! Snake God's Battledrones are heading to Your Position!";
 		yield WaitForSeconds(textChangeTime);
-		guiText.text="Snake God is supposed to protect itself with these battledrones!";		
+		GetComponent.<GUIText>().text="Snake God is supposed to protect itself with these battledrones!";		
 		yield WaitForSeconds(textChangeTime);
-		guiText.text="Kill them all and You will get directly to Snake God! Good Luck!";
+		GetComponent.<GUIText>().text="Kill them all and You will get directly to Snake God! Good Luck!";
 		yield WaitForSeconds(textChangeTime);
-		guiText.text="";
+		GetComponent.<GUIText>().text="";
 		battleDroneSpawn=true;
 	}
 	if(mode=="noBattleDronesLeft")
 	{
 		battleDroneSpawn=false;
-		guiText.text="You did it! You crushed Snake God's guards!";
+		GetComponent.<GUIText>().text="You did it! You crushed Snake God's guards!";
 		locTxt = "Ambrosia Alpha IV [Preparing]";
 		yield WaitForSeconds(textChangeTime);
-		guiText.text="Now to Sacristania Quadrant!";
+		GetComponent.<GUIText>().text="Now to Sacristania Quadrant!";
 		shipParticle.active=true;
 		yield WaitForSeconds(textChangeTime);
 		Camera.main.SendMessage("fadeOut");
@@ -184,22 +184,22 @@ function ChangeText(mode:String)
 		Camera.main.gameObject.SendMessage("fadeIn");
 		Camera.main.gameObject.SendMessage("BossFight");
 		locTxt = "Sacristania Quadrant [SnakeGod]";
-		guiText.text="We are here! I see Snake God in my radar! He is on Your Way! ";
+		GetComponent.<GUIText>().text="We are here! I see Snake God in my radar! He is on Your Way! ";
 		yield WaitForSeconds(textChangeTime);
-		guiText.text="United Human Federation wishes luck to You! Kill those reptiles!";	
+		GetComponent.<GUIText>().text="United Human Federation wishes luck to You! Kill those reptiles!";	
 		yield WaitForSeconds(textChangeTime);
-		guiText.text="Hit Snake God´s shield down and bomb will trigger itself!";	
+		GetComponent.<GUIText>().text="Hit Snake God´s shield down and bomb will trigger itself!";	
 		yield WaitForSeconds(textChangeTime);
-		guiText.text="All is in Your hands again, Pilot!";
+		GetComponent.<GUIText>().text="All is in Your hands again, Pilot!";
 		SG.SetActiveRecursively(true);
 	}
 	if(mode=="sacrifice")
 	{
 		Instances.masterOfSG.called=true;
 		locTxt = "Location Service unavailable!";
-		guiText.text="Your sacrifice will never be forgotten!";
+		GetComponent.<GUIText>().text="Your sacrifice will never be forgotten!";
 		yield WaitForSeconds(5);
-		guiText.text="Our fleet can now destroy disoriented reptilian fleet!";
+		GetComponent.<GUIText>().text="Our fleet can now destroy disoriented reptilian fleet!";
 		GameObject.Find("ScoreText").SendMessage("SubmitHighScore");
 		yield WaitForSeconds(5);
 		LoadLevel("Intro");
@@ -259,38 +259,38 @@ function Update()
 {
 	if(warning)
 	{
-		if(Time.time%1<0.5)guiText.text="Warning! Entering Asteroid Field...";
-		if(Time.time%1>0.5) guiText.text="";
+		if(Time.time%1<0.5)GetComponent.<GUIText>().text="Warning! Entering Asteroid Field...";
+		if(Time.time%1>0.5) GetComponent.<GUIText>().text="";
 		locTxt = "Asteroid Field [Entering]";
 	}
 	if(shipControlWarning)
 	{
 		if(Time.time%1<0.5)
 		{
-			guiText.text="Warning! Ship has lost Control - Mission Failed!";
+			GetComponent.<GUIText>().text="Warning! Ship has lost Control - Mission Failed!";
 			locTxt = "Location Service unavailable!";
 		}
 		if(Time.time%1>0.5)
 		{
-			guiText.text="";
+			GetComponent.<GUIText>().text="";
 			locTxt = "";
 		}
 	}
 	if(incomingEnemyWarning&&!crossShipSpawn)
 	{
-		if(Time.time%1<0.5) guiText.text="Warning! Incoming Enemy Ships!";
-		if(Time.time%1>0.5) guiText.text="";
+		if(Time.time%1<0.5) GetComponent.<GUIText>().text="Warning! Incoming Enemy Ships!";
+		if(Time.time%1>0.5) GetComponent.<GUIText>().text="";
 		ChangeText("crossShip");
 		locTxt = "Ambrosia Alpha IV [Enemy CrossShips]";
 	}
 	if(!incomingEnemyWarning&&crossShipSpawn&&destroyedCrosships<50)
 	{
-		guiText.text="Destroyed CrossShips: "+destroyedCrosships+"/50";
+		GetComponent.<GUIText>().text="Destroyed CrossShips: "+destroyedCrosships+"/50";
 	}
 	if(asteroidFieldCountDown)
 	{
 		var timeLeft: float=(40+fixedTime)-Time.time;
-		guiText.text="Asteroid Field ends in "+(Mathf.Round(timeLeft*1000))/1000+" seconds!";
+		GetComponent.<GUIText>().text="Asteroid Field ends in "+(Mathf.Round(timeLeft*1000))/1000+" seconds!";
 		locTxt = "Asteroid Field [Combat]";
 	}
 	if(fixedTime!=0&&Time.time>40+fixedTime) 

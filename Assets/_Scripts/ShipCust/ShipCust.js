@@ -18,7 +18,7 @@ private var playerName: String;
 
 function Start ()
 {
-	mat = renderer.material;
+	mat = GetComponent.<Renderer>().material;
 	guiSkin = Resources.Load("GUI",GUISkin) as GUISkin;
 	playerName = PlayerPrefs.GetString("PlayerName","Pilot");
 }

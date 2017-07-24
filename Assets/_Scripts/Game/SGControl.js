@@ -20,7 +20,7 @@ function Awake()
 {
 	lastShot=999.9;
 	tempLives=battleDroneLives;
-	updateText=GameObject.Find("UpperText").guiText;
+	updateText=GameObject.Find("UpperText").GetComponent.<GUIText>();
 }
 function Update () 
 {	
